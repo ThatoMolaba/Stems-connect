@@ -1,0 +1,372 @@
+<html><head><base href="https://cloud.schoolservices.ai/attendance%20keep%20everything%20as%20is%20but%20just%20fit%20every%20bubble%20inside%20its%20frame%20and%20not%20overlay.%20also%20make%20the%20page%20user%20friendly"><title>Stems Connect - User-Friendly Attendance Management</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid var(--accent-color);
+        padding: 12px;
+        text-align: left;
+    }
+    th {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    tr:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+    .attendance-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .attendance-form select, .attendance-form input {
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+    }
+    .attendance-form button, .action-button {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        border: none;
+        padding: 12px;
+        cursor: pointer;
+        margin-top: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .attendance-form button:hover, .action-button:hover {
+        background-color: #384d55;
+    }
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 5px;
+        margin-top: 20px;
+    }
+    .calendar-day {
+        background-color: #fff;
+        border: 1px solid var(--accent-color);
+        padding: 10px;
+        text-align: center;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .calendar-day:hover {
+        background-color: var(--accent-color);
+    }
+    .calendar-day.today {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    .quick-stats {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .stat-box {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 15px;
+        border-radius: 10px;
+        text-align: center;
+        flex: 1 1 calc(33% - 10px);
+        margin: 5px;
+        min-width: 120px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .auto-attendance {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 15px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .panic-button {
+        background-color: #d9534f;
+        color: white;
+        padding: 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+    .panic-button:hover {
+        background-color: #c9302c;
+    }
+    #map {
+        height: 200px;
+        width: 100%;
+        background-color: #f0e6d6;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+</style>
+</head><body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>User-Friendly Attendance Management</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/attendance">Attendance</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication">Communication</a></li>
+            <li><a href="https://cloud.schoolservices.ai/assessment">Assessment</a></li>
+            <li><a href="https://cloud.schoolservices.ai/admissions">Admissions</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module">
+                <h2>Quick Stats</h2>
+                <div class="quick-stats">
+                    <div class="stat-box tooltip">
+                        <h3>Overall Attendance</h3>
+                        <p>92%</p>
+                        <span class="tooltiptext">Percentage of students present today across all classes</span>
+                    </div>
+                    <div class="stat-box tooltip">
+                        <h3>Classes Today</h3>
+                        <p>15</p>
+                        <span class="tooltiptext">Total number of classes scheduled for today</span>
+                    </div>
+                    <div class="stat-box tooltip">
+                        <h3>Students Present</h3>
+                        <p>450 / 480</p>
+                        <span class="tooltiptext">Number of students present out of total enrolled</span>
+                    </div>
+                </div>
+                <h2>Today's Attendance Overview</h2>
+                <table>
+                    <tr>
+                        <th>Class</th>
+                        <th>Present</th>
+                        <th>Absent</th>
+                        <th>Total</th>
+                    </tr>
+                    <tr>
+                        <td>Class 10A</td>
+                        <td>25</td>
+                        <td>5</td>
+                        <td>30</td>
+                    </tr>
+                    <tr>
+                        <td>Class 9B</td>
+                        <td>28</td>
+                        <td>4</td>
+                        <td>32</td>
+                    </tr>
+                    <tr>
+                        <td>Class 8C</td>
+                        <td>27</td>
+                        <td>3</td>
+                        <td>30</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="module">
+                <h2>Automatic Attendance Recording</h2>
+                <div class="auto-attendance">
+                    <p>Status: Active</p>
+                    <p>Last sync: 2 minutes ago</p>
+                    <button class="action-button" onclick="syncAttendance()">Sync Now</button>
+                </div>
+                <h3>Manual Override</h3>
+                <form class="attendance-form">
+                    <select id="class-select" required>
+                        <option value="">Select Class</option>
+                        <option value="10A">Class 10A</option>
+                        <option value="9B">Class 9B</option>
+                        <option value="8C">Class 8C</option>
+                    </select>
+                    <input type="date" id="attendance-date" required>
+                    <button type="submit">Take Attendance</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Student Safety</h2>
+                <button class="panic-button" onclick="activatePanicButton()">ACTIVATE PANIC BUTTON</button>
+                <div id="map"></div>
+                <p>Live location tracking will be displayed here when the panic button is activated.</p>
+            </div>
+            <div class="module">
+                <h2>Monthly Attendance Calendar</h2>
+                <div class="calendar">
+                    <div class="calendar-day">1</div>
+                    <div class="calendar-day">2</div>
+                    <div class="calendar-day">3</div>
+                    <div class="calendar-day">4</div>
+                    <div class="calendar-day">5</div>
+                    <div class="calendar-day">6</div>
+                    <div class="calendar-day">7</div>
+                    <div class="calendar-day">8</div>
+                    <div class="calendar-day">9</div>
+                    <div class="calendar-day">10</div>
+                    <div class="calendar-day">11</div>
+                    <div class="calendar-day">12</div>
+                    <div class="calendar-day">13</div>
+                    <div class="calendar-day today">14</div>
+                    <div class="calendar-day">15</div>
+                    <!-- ... more days ... -->
+                </div>
+            </div>
+            <div class="module">
+                <h2>Attendance Reports</h2>
+                <ul>
+                    <li><a href="https://cloud.schoolservices.ai/attendance/reports/weekly">Weekly Report</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/attendance/reports/monthly">Monthly Report</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/attendance/reports/custom">Custom Date Range Report</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.querySelector('.attendance-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedClass = document.getElementById('class-select').value;
+            const selectedDate = document.getElementById('attendance-date').value;
+            if (selectedClass && selectedDate) {
+                alert(`Taking attendance for ${selectedClass} on ${selectedDate}`);
+                // Here you would typically navigate to a page to mark individual student attendance
+                window.location.href = `https://cloud.schoolservices.ai/attendance/mark/${selectedClass}/${selectedDate}`;
+            } else {
+                alert("Please select both a class and a date.");
+            }
+        });
+
+        // Simulating dynamic content for the calendar
+        document.querySelectorAll('.calendar-day').forEach(day => {
+            day.addEventListener('click', function() {
+                alert(`Viewing attendance for ${this.textContent} ${new Date().toLocaleString('default', { month: 'long' })}`);
+            });
+        });
+
+        function syncAttendance() {
+            alert("Syncing attendance data...");
+            // Simulating a sync process
+            setTimeout(() => {
+                alert("Attendance data synced successfully!");
+                document.querySelector('.auto-attendance p:nth-child(2)').textContent = "Last sync: Just now";
+            }, 2000);
+        }
+
+        function activatePanicButton() {
+            alert("Panic button activated! Emergency services and school administration have been notified.");
+            document.getElementById('map').innerHTML = "Live location tracking activated. Displaying student location...";
+            // In a real application, this would trigger location tracking and notify relevant authorities
+        }
+    </script>
+</body></html>

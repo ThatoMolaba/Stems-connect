@@ -1,0 +1,237 @@
+<html><head><base href="https://cloud.schoolservices.ai/home%20must%20have%20the%20same%20colours%20but%20edit%20page%20to%20look%20more%20morden.%20make%20the%20click%20butttons%20bubbles,%20make%20the%20AI%20assistant%20a%20chat%20bot%20pop%20up%20with%20the%20current%20message%20as%20the%20first%20message%20that%20pops%20up"><title>Stems Connect - Modern Home</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #e8d8c3;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: #4a6670;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: #d1b899;
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    nav ul li a {
+        color: #4a6670;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    nav ul li a:hover {
+        color: #333;
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .card {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    h2 {
+        color: #4a6670;
+    }
+    .bubble-button {
+        display: inline-block;
+        background-color: #4a6670;
+        color: #fff;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 50px;
+        margin-top: 10px;
+        transition: all 0.3s ease;
+    }
+    .bubble-button:hover {
+        background-color: #3a5260;
+        transform: scale(1.05);
+    }
+    #chatbot-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #4a6670;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    #chatbot-window {
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        width: 300px;
+        height: 400px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    #chatbot-header {
+        background-color: #4a6670;
+        color: white;
+        padding: 10px;
+        font-weight: bold;
+    }
+    #chatbot-messages {
+        height: 320px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+    #chatbot-input {
+        display: flex;
+        padding: 10px;
+    }
+    #chatbot-input input {
+        flex-grow: 1;
+        padding: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    #chatbot-input button {
+        background-color: #4a6670;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        margin-left: 5px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/home">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/dashboard">Dashboard</a></li>
+            <li><a href="https://cloud.schoolservices.ai/calendar">Calendar</a></li>
+            <li><a href="https://cloud.schoolservices.ai/messages">Messages</a></li>
+            <li><a href="https://cloud.schoolservices.ai/settings">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="card">
+                <h2>Upcoming Events</h2>
+                <ul>
+                    <li>Parent-Teacher Conference - May 15</li>
+                    <li>Science Fair - May 20</li>
+                    <li>End of Year Picnic - June 5</li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/calendar" class="bubble-button">View Calendar</a>
+            </div>
+            <div class="card">
+                <h2>Recent Announcements</h2>
+                <ul>
+                    <li>New STEM curriculum launching next semester</li>
+                    <li>School donation drive starts next week</li>
+                    <li>Summer school registration now open</li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/announcements" class="bubble-button">Read More</a>
+            </div>
+            <div class="card">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="https://cloud.schoolservices.ai/gradebook">Gradebook</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/attendance">Attendance</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/resources">Learning Resources</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/support">IT Support</a></li>
+                </ul>
+            </div>
+        </main>
+    </div>
+
+    <div id="chatbot-icon">AI</div>
+    <div id="chatbot-window">
+        <div id="chatbot-header">AI Assistant</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+            <input type="text" placeholder="Ask a question...">
+            <button>Send</button>
+        </div>
+    </div>
+
+    <script>
+        const chatbotIcon = document.getElementById('chatbot-icon');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.querySelector('#chatbot-input input');
+        const chatbotSendButton = document.querySelector('#chatbot-input button');
+
+        chatbotIcon.addEventListener('click', () => {
+            chatbotWindow.style.display = chatbotWindow.style.display === 'none' ? 'block' : 'none';
+            if (chatbotWindow.style.display === 'block' && chatbotMessages.children.length === 0) {
+                addMessage("Hello! I'm your AI assistant. How can I help you today? You can ask me about school policies, upcoming events, or any general questions about Stems Connect.", 'ai');
+            }
+        });
+
+        chatbotSendButton.addEventListener('click', sendMessage);
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+                // Simulate AI response (replace with actual AI integration)
+                setTimeout(() => {
+                    addMessage("I've received your question. In a real implementation, I would provide an intelligent response here.", 'ai');
+                }, 1000);
+            }
+        }
+
+        function addMessage(text, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.textContent = text;
+            messageElement.classList.add(sender);
+            chatbotMessages.appendChild(messageElement);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>

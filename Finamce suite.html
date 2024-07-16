@@ -1,0 +1,311 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20%20Finance%20Suite"><title>Stems Connect - Finance Suite</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .transaction-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .transaction-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .transaction-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+        color: #666;
+    }
+    .contact-form {
+        background-color: var(--secondary-color);
+        padding: 20px;
+        border-radius: 10px;
+    }
+    footer {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Finance Suite</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/finance/budget">Budgeting</a></li>
+            <li><a href="https://cloud.schoolservices.ai/finance/payroll">Payroll</a></li>
+            <li><a href="https://cloud.schoolservices.ai/finance/fees">Fee Payment</a></li>
+            <li><a href="https://cloud.schoolservices.ai/finance/pos">Point of Sale</a></li>
+            <li><a href="https://cloud.schoolservices.ai/finance/reports">Reports</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module">
+                <h2>Budgeting Overview</h2>
+                <div class="chart-container">
+                    [Budget allocation chart would be displayed here]
+                </div>
+                <p>Current fiscal year: 2023-2024</p>
+                <p>Total budget: $5,000,000</p>
+                <a href="https://cloud.schoolservices.ai/finance/budget/manage" class="btn">Manage Budget</a>
+            </div>
+            <div class="module">
+                <h2>Payroll Management</h2>
+                <p>Next payroll run: May 31, 2023</p>
+                <p>Total payroll: $350,000</p>
+                <ul class="transaction-list">
+                    <li>
+                        <strong>Teachers</strong> - $250,000
+                    </li>
+                    <li>
+                        <strong>Administration</strong> - $75,000
+                    </li>
+                    <li>
+                        <strong>Support Staff</strong> - $25,000
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/finance/payroll/run" class="btn">Run Payroll</a>
+            </div>
+            <div class="module">
+                <h2>Fee Payment</h2>
+                <p>Easy fee payment options for parents and guardians:</p>
+                <ul>
+                    <li>Debit Order</li>
+                    <li>Mobile App</li>
+                    <li>Online Portal</li>
+                </ul>
+                <div class="form-group">
+                    <label for="payment-method">Select Payment Method:</label>
+                    <select id="payment-method">
+                        <option value="">Choose an option</option>
+                        <option value="debit-order">Debit Order</option>
+                        <option value="mobile-app">Mobile App</option>
+                        <option value="online-portal">Online Portal</option>
+                    </select>
+                </div>
+                <a href="https://cloud.schoolservices.ai/finance/fees/pay" class="btn">Make Payment</a>
+            </div>
+            <div class="module">
+                <h2>Point of Sale Systems</h2>
+                <p>Manage cashless payments for school services:</p>
+                <ul>
+                    <li>Cafeteria</li>
+                    <li>School Store</li>
+                    <li>Event Tickets</li>
+                </ul>
+                <div class="chart-container">
+                    [POS transaction chart would be displayed here]
+                </div>
+                <a href="https://cloud.schoolservices.ai/finance/pos/transactions" class="btn">View Transactions</a>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Contact Us</h2>
+                <p>For more information on how Stems can transform your school's operations, please contact us:</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </main>
+    </div>
+    <footer>
+        <p>&copy; 2023 Stems Connect. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simulated budget management functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/finance/budget/manage"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Budget management interface would be displayed here.');
+        });
+
+        // Simulated payroll run functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/finance/payroll/run"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Payroll processing would be initiated here.');
+        });
+
+        // Simulated fee payment functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/finance/fees/pay"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            const paymentMethod = document.getElementById('payment-method').value;
+            if (paymentMethod) {
+                alert(`Payment process for ${paymentMethod} would be initiated here.`);
+            } else {
+                alert('Please select a payment method.');
+            }
+        });
+
+        // Simulated POS transaction view functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/finance/pos/transactions"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Detailed POS transaction report would be displayed here.');
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            alert(`Thank you for your message, ${name}! We will contact you at ${email} shortly.`);
+            this.reset();
+        });
+
+        // Add hover effect to transaction list items
+        document.querySelectorAll('.transaction-list li').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#e0e0e0';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#f8f8f8';
+            });
+        });
+    </script>
+</body></html>

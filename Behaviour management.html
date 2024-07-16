@@ -1,0 +1,351 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20Behaviour%20Management"><title>Stems Connect - Behaviour Management System</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .event-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .event-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .event-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status-badge.positive {
+        background-color: var(--success-color);
+        color: white;
+    }
+    .status-badge.negative {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    .status-badge.neutral {
+        background-color: var(--warning-color);
+        color: black;
+    }
+    .merit-demerit {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+    }
+    .merit-demerit > div {
+        text-align: center;
+        padding: 10px;
+        border-radius: 10px;
+        width: 45%;
+    }
+    .merit-demerit .merits {
+        background-color: rgba(76, 175, 80, 0.1);
+    }
+    .merit-demerit .demerits {
+        background-color: rgba(244, 67, 54, 0.1);
+    }
+    .communication-panel {
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Behaviour Management System</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/behaviour">Behaviour</a></li>
+            <li><a href="https://cloud.schoolservices.ai/rewards">Rewards</a></li>
+            <li><a href="https://cloud.schoolservices.ai/consequences">Consequences</a></li>
+            <li><a href="https://cloud.schoolservices.ai/reports">Reports</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Record Behavioural Event</h2>
+                <form id="behaviour-event-form">
+                    <div class="form-group">
+                        <label for="student-name">Student Name</label>
+                        <input type="text" id="student-name" name="student-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-type">Event Type</label>
+                        <select id="event-type" name="event-type" required>
+                            <option value="">Select event type</option>
+                            <option value="positive">Positive</option>
+                            <option value="negative">Negative</option>
+                            <option value="neutral">Neutral</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description" name="event-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                    </div>
+                    <button type="submit" class="btn">Record Event</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Recent Behavioural Events</h2>
+                <ul class="event-list">
+                    <li>
+                        <strong>John Doe</strong><br>
+                        Event: Helped a classmate with homework<br>
+                        Date: May 15, 2023<br>
+                        <span class="status-badge positive">Positive</span>
+                    </li>
+                    <li>
+                        <strong>Jane Smith</strong><br>
+                        Event: Disrupted class discussion<br>
+                        Date: May 14, 2023<br>
+                        <span class="status-badge negative">Negative</span>
+                    </li>
+                    <li>
+                        <strong>Mike Johnson</strong><br>
+                        Event: Participated in class debate<br>
+                        Date: May 13, 2023<br>
+                        <span class="status-badge neutral">Neutral</span>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/behaviour/events" class="btn">View All Events</a>
+            </div>
+            <div class="module">
+                <h2>Merit and Demerit Management</h2>
+                <div class="merit-demerit">
+                    <div class="merits">
+                        <h3>Merits</h3>
+                        <p>Total: 150</p>
+                        <button class="btn" onclick="addMerit()">Add Merit</button>
+                    </div>
+                    <div class="demerits">
+                        <h3>Demerits</h3>
+                        <p>Total: 30</p>
+                        <button class="btn" onclick="addDemerit()">Add Demerit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Communicate Rewards and Consequences</h2>
+                <div class="communication-panel">
+                    <h3>Latest Communication</h3>
+                    <p><strong>To:</strong> John Doe</p>
+                    <p><strong>Subject:</strong> Recognition for Helpfulness</p>
+                    <p><strong>Message:</strong> Congratulations on receiving a merit for helping your classmate with homework. Keep up the great work!</p>
+                </div>
+                <a href="https://cloud.schoolservices.ai/behaviour/communicate" class="btn">Send New Communication</a>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Behaviour Trends</h2>
+                <div class="chart-container" id="behaviour-chart"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Behaviour Event Form Submission
+        document.getElementById('behaviour-event-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Behavioural event recorded successfully!');
+            this.reset();
+        });
+
+        // Merit and Demerit Management
+        function addMerit() {
+            alert('Merit added successfully!');
+            // Here you would typically update the merit count and refresh the display
+        }
+
+        function addDemerit() {
+            alert('Demerit added successfully!');
+            // Here you would typically update the demerit count and refresh the display
+        }
+
+        // Behaviour Trends Chart
+        const ctx = document.createElement('canvas');
+        document.getElementById('behaviour-chart').appendChild(ctx);
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Positive Events',
+                    data: [65, 59, 80, 81, 56, 55],
+                    borderColor: 'rgba(76, 175, 80, 1)',
+                    backgroundColor: 'rgba(76, 175, 80, 0.2)',
+                    fill: true
+                },
+                {
+                    label: 'Negative Events',
+                    data: [28, 48, 40, 19, 86, 27],
+                    borderColor: 'rgba(244, 67, 54, 1)',
+                    backgroundColor: 'rgba(244, 67, 54, 0.2)',
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Behavioural Event Trends'
+                    }
+                }
+            }
+        });
+
+        // Event List Interactivity
+        document.querySelectorAll('.event-list li').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.backgroundColor = '#e0e0e0';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

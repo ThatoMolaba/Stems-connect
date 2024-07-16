@@ -1,0 +1,368 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20Learning%20Management%20System%20(LMS)"><title>Stems Connect - Learning Management System (LMS)</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .class-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .class-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .class-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .chat-window {
+        height: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        overflow-y: auto;
+    }
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .chat-message.sent {
+        background-color: #e1f3fb;
+        text-align: right;
+    }
+    .chat-message.received {
+        background-color: #f1f0f0;
+    }
+    .whiteboard {
+        width: 100%;
+        height: 300px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+    }
+    .control-panel {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+    .control-panel button {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .control-panel button:hover {
+        background-color: #384d55;
+    }
+    .voting-panel {
+        margin-top: 20px;
+    }
+    .voting-option {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .voting-option input[type="radio"] {
+        margin-right: 10px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Learning Management System (LMS)</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/lms">LMS</a></li>
+            <li><a href="https://cloud.schoolservices.ai/classes">My Classes</a></li>
+            <li><a href="https://cloud.schoolservices.ai/resources">Resources</a></li>
+            <li><a href="https://cloud.schoolservices.ai/support">Support</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Create Online Class</h2>
+                <form id="create-class-form">
+                    <div class="form-group">
+                        <label for="class-name">Class Name</label>
+                        <input type="text" id="class-name" name="class-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-description">Class Description</label>
+                        <textarea id="class-description" name="class-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="class-date">Date and Time</label>
+                        <input type="datetime-local" id="class-date" name="class-date" required>
+                    </div>
+                    <button type="submit" class="btn">Create Class</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>My Classes</h2>
+                <ul class="class-list">
+                    <li>
+                        <strong>Advanced Mathematics</strong><br>
+                        Date: May 20, 2023 | 10:00 AM<br>
+                        <a href="https://cloud.schoolservices.ai/lms/class/math-101" class="btn">Join Class</a>
+                    </li>
+                    <li>
+                        <strong>World History</strong><br>
+                        Date: May 22, 2023 | 2:00 PM<br>
+                        <a href="https://cloud.schoolservices.ai/lms/class/history-201" class="btn">Join Class</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Live Class: Advanced Mathematics</h2>
+                <div class="whiteboard" id="whiteboard">
+                    <!-- Whiteboard content would be dynamically generated here -->
+                </div>
+                <div class="control-panel">
+                    <button id="screen-record">Start Screen Recording</button>
+                    <button id="toggle-mute">Mute</button>
+                    <button id="clear-whiteboard">Clear Whiteboard</button>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Class Chat</h2>
+                <div class="chat-window" id="chat-window">
+                    <div class="chat-message received">
+                        <strong>John:</strong> Hi everyone, welcome to the class!
+                    </div>
+                    <div class="chat-message sent">
+                        <strong>You:</strong> Thanks, John! Excited to be here.
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button id="send-message" class="btn">Send</button>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Class Voting</h2>
+                <div class="voting-panel">
+                    <h3>Question: What topic should we cover next?</h3>
+                    <div class="voting-option">
+                        <input type="radio" id="option1" name="vote" value="option1">
+                        <label for="option1">Calculus</label>
+                    </div>
+                    <div class="voting-option">
+                        <input type="radio" id="option2" name="vote" value="option2">
+                        <label for="option2">Linear Algebra</label>
+                    </div>
+                    <div class="voting-option">
+                        <input type="radio" id="option3" name="vote" value="option3">
+                        <label for="option3">Statistics</label>
+                    </div>
+                    <button id="submit-vote" class="btn">Submit Vote</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Create Class Form Submission
+        document.getElementById('create-class-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Class created successfully!');
+        });
+
+        // Whiteboard Functionality
+        const whiteboard = document.getElementById('whiteboard');
+        let isDrawing = false;
+        let context = whiteboard.getContext('2d');
+
+        whiteboard.addEventListener('mousedown', startDrawing);
+        whiteboard.addEventListener('mousemove', draw);
+        whiteboard.addEventListener('mouseup', stopDrawing);
+
+        function startDrawing(e) {
+            isDrawing = true;
+            draw(e);
+        }
+
+        function draw(e) {
+            if (!isDrawing) return;
+            context.lineWidth = 2;
+            context.lineCap = 'round';
+            context.strokeStyle = '#000';
+
+            context.lineTo(e.clientX - whiteboard.offsetLeft, e.clientY - whiteboard.offsetTop);
+            context.stroke();
+            context.beginPath();
+            context.moveTo(e.clientX - whiteboard.offsetLeft, e.clientY - whiteboard.offsetTop);
+        }
+
+        function stopDrawing() {
+            isDrawing = false;
+            context.beginPath();
+        }
+
+        // Clear Whiteboard
+        document.getElementById('clear-whiteboard').addEventListener('click', function() {
+            context.clearRect(0, 0, whiteboard.width, whiteboard.height);
+        });
+
+        // Screen Recording Toggle
+        let isRecording = false;
+        document.getElementById('screen-record').addEventListener('click', function() {
+            isRecording = !isRecording;
+            this.textContent = isRecording ? 'Stop Recording' : 'Start Screen Recording';
+            // Here you would implement actual screen recording functionality
+        });
+
+        // Mute Toggle
+        let isMuted = false;
+        document.getElementById('toggle-mute').addEventListener('click', function() {
+            isMuted = !isMuted;
+            this.textContent = isMuted ? 'Unmute' : 'Mute';
+            // Here you would implement actual audio muting functionality
+        });
+
+        // Chat Functionality
+        document.getElementById('send-message').addEventListener('click', function() {
+            const chatInput = document.getElementById('chat-input');
+            const chatWindow = document.getElementById('chat-window');
+            if (chatInput.value.trim() !== '') {
+                const message = document.createElement('div');
+                message.className = 'chat-message sent';
+                message.innerHTML = `<strong>You:</strong> ${chatInput.value}`;
+                chatWindow.appendChild(message);
+                chatInput.value = '';
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            }
+        });
+
+        // Voting Functionality
+        document.getElementById('submit-vote').addEventListener('click', function() {
+            const selectedOption = document.querySelector('input[name="vote"]:checked');
+            if (selectedOption) {
+                alert(`You voted for: ${selectedOption.nextElementSibling.textContent}`);
+            } else {
+                alert('Please select an option before submitting your vote.');
+            }
+        });
+    </script>
+</body></html>

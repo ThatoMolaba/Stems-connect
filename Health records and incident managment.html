@@ -1,0 +1,377 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20%20Health%20Records%20and%20Incident%20Management"><title>Stems Connect - Health Records and Incident Management</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .student-list, .medication-list, .incident-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .student-list li, .medication-list li, .incident-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .student-list li:hover, .medication-list li:hover, .incident-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
+    .search-bar {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status-badge.active {
+        background-color: var(--success-color);
+        color: white;
+    }
+    .status-badge.pending {
+        background-color: var(--warning-color);
+        color: black;
+    }
+    .status-badge.resolved {
+        background-color: var(--info-color);
+        color: white;
+    }
+    .medication-schedule {
+        background-color: #e3f2fd;
+        border-left: 4px solid var(--info-color);
+        padding: 10px;
+        margin-top: 10px;
+    }
+    .incident-report {
+        background-color: #fff3e0;
+        border-left: 4px solid var(--warning-color);
+        padding: 10px;
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Health Records and Incident Management</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/health/records">Health Records</a></li>
+            <li><a href="https://cloud.schoolservices.ai/health/medication">Medication</a></li>
+            <li><a href="https://cloud.schoolservices.ai/health/incidents">Incidents</a></li>
+            <li><a href="https://cloud.schoolservices.ai/health/billing">Billing</a></li>
+            <li><a href="https://cloud.schoolservices.ai/health/reports">Reports</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Quick Access</h2>
+                <input type="text" class="search-bar" id="student-search" placeholder="Search for a student...">
+                <ul class="student-list" id="student-list">
+                    <li>
+                        <strong>John Doe</strong> - Year 11<br>
+                        <span class="tag">Asthma</span>
+                        <span class="tag">Peanut Allergy</span>
+                        <button class="btn" onclick="viewHealthRecord('John Doe')">View Health Record</button>
+                    </li>
+                    <li>
+                        <strong>Jane Smith</strong> - Year 10<br>
+                        <span class="tag">Diabetes</span>
+                        <button class="btn" onclick="viewHealthRecord('Jane Smith')">View Health Record</button>
+                    </li>
+                    <li>
+                        <strong>Mike Johnson</strong> - Year 12<br>
+                        <span class="tag">ADHD</span>
+                        <button class="btn" onclick="viewHealthRecord('Mike Johnson')">View Health Record</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Medication Schedule</h2>
+                <div class="medication-schedule">
+                    <h3>Today's Medication</h3>
+                    <ul class="medication-list">
+                        <li>
+                            <strong>John Doe</strong> - Inhaler<br>
+                            Time: 12:00 PM<br>
+                            <button class="btn" onclick="issueMedication('John Doe', 'Inhaler')">Issue Medication</button>
+                        </li>
+                        <li>
+                            <strong>Jane Smith</strong> - Insulin<br>
+                            Time: 1:30 PM<br>
+                            <button class="btn" onclick="issueMedication('Jane Smith', 'Insulin')">Issue Medication</button>
+                        </li>
+                        <li>
+                            <strong>Mike Johnson</strong> - Ritalin<br>
+                            Time: 3:00 PM<br>
+                            <button class="btn" onclick="issueMedication('Mike Johnson', 'Ritalin')">Issue Medication</button>
+                        </li>
+                    </ul>
+                </div>
+                <a href="https://cloud.schoolservices.ai/health/medication/schedule" class="btn">Full Schedule</a>
+            </div>
+            <div class="module">
+                <h2>Recent Incidents</h2>
+                <ul class="incident-list">
+                    <li>
+                        <strong>Playground Fall</strong><br>
+                        Student: Sarah Brown<br>
+                        Date: May 15, 2023<br>
+                        <span class="status-badge resolved">Resolved</span>
+                        <button class="btn" onclick="viewIncident('Sarah Brown', 'Playground Fall')">View Details</button>
+                    </li>
+                    <li>
+                        <strong>Allergic Reaction</strong><br>
+                        Student: John Doe<br>
+                        Date: May 14, 2023<br>
+                        <span class="status-badge active">Active</span>
+                        <button class="btn" onclick="viewIncident('John Doe', 'Allergic Reaction')">View Details</button>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/health/incidents/report" class="btn">Report New Incident</a>
+            </div>
+            <div class="module">
+                <h2>Billing Overview</h2>
+                <ul class="student-list">
+                    <li>
+                        <strong>John Doe</strong><br>
+                        Outstanding: $50.00<br>
+                        <button class="btn" onclick="processBilling('John Doe')">Process Payment</button>
+                    </li>
+                    <li>
+                        <strong>Jane Smith</strong><br>
+                        Outstanding: $75.00<br>
+                        <button class="btn" onclick="processBilling('Jane Smith')">Process Payment</button>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/health/billing/report" class="btn">Generate Billing Report</a>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>New Incident Report</h2>
+                <form id="incident-form">
+                    <div class="form-group">
+                        <label for="incident-student">Student Name</label>
+                        <select id="incident-student" name="incident-student" required>
+                            <option value="">Select a student</option>
+                            <option value="John Doe">John Doe</option>
+                            <option value="Jane Smith">Jane Smith</option>
+                            <option value="Mike Johnson">Mike Johnson</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="incident-type">Incident Type</label>
+                        <input type="text" id="incident-type" name="incident-type" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incident-description">Description</label>
+                        <textarea id="incident-description" name="incident-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="incident-action">Action Taken</label>
+                        <textarea id="incident-action" name="incident-action" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Submit Incident Report</button>
+                </form>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Health Analytics</h2>
+                <div class="chart-container" id="health-chart"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // View Health Record
+        function viewHealthRecord(studentName) {
+            alert(`Viewing health record for ${studentName}`);
+            // In a real application, this would open a detailed view of the student's health record
+        }
+
+        // Issue Medication
+        function issueMedication(studentName, medication) {
+            alert(`Medication ${medication} issued to ${studentName}`);
+            // In a real application, this would update the medication log and potentially trigger billing
+        }
+
+        // View Incident
+        function viewIncident(studentName, incidentType) {
+            alert(`Viewing incident details for ${studentName}: ${incidentType}`);
+            // In a real application, this would open a detailed view of the incident
+        }
+
+        // Process Billing
+        function processBilling(studentName) {
+            alert(`Processing payment for ${studentName}`);
+            // In a real application, this would open a payment processing interface
+        }
+
+        // Student Search Functionality
+        document.getElementById('student-search').addEventListener('input', function() {
+            let searchTerm = this.value.toLowerCase();
+            let studentList = document.getElementById('student-list').getElementsByTagName('li');
+            for (let i = 0; i < studentList.length; i++) {
+                let studentName = studentList[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
+                if (studentName.includes(searchTerm)) {
+                    studentList[i].style.display = "";
+                } else {
+                    studentList[i].style.display = "none";
+                }
+            }
+        });
+
+        // Incident Report Form Submission
+        document.getElementById('incident-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let studentName = document.getElementById('incident-student').value;
+            let incidentType = document.getElementById('incident-type').value;
+            alert(`Incident report for ${studentName} (${incidentType}) submitted successfully!`);
+            this.reset();
+        });
+
+        // Health Analytics Chart
+        const ctx = document.createElement('canvas');
+        document.getElementById('health-chart').appendChild(ctx);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels:

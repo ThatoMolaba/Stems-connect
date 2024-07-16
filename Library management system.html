@@ -1,0 +1,339 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20Library%20Management%20-%20Multiple%20textbook%20management%20linked%20to%20student%20data"><title>Stems Connect - Library Management System</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .book-list, .student-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .book-list li, .student-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .book-list li:hover, .student-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .search-bar {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    .status {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status.available {
+        background-color: #c8e6c9;
+        color: #388e3c;
+    }
+    .status.borrowed {
+        background-color: #ffcdd2;
+        color: #d32f2f;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Library Management System</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/library">Library</a></li>
+            <li><a href="https://cloud.schoolservices.ai/students">Students</a></li>
+            <li><a href="https://cloud.schoolservices.ai/reports">Reports</a></li>
+            <li><a href="https://cloud.schoolservices.ai/settings">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Textbook Search</h2>
+                <input type="text" class="search-bar" id="book-search" placeholder="Search for textbooks...">
+                <ul class="book-list" id="book-list">
+                    <li>
+                        <strong>Advanced Mathematics 11th Edition</strong><br>
+                        Author: John Smith<br>
+                        ISBN: 978-3-16-148410-0<br>
+                        <span class="status available">Available</span>
+                        <a href="https://cloud.schoolservices.ai/library/book/math11" class="btn">View Details</a>
+                    </li>
+                    <li>
+                        <strong>World History: A Comprehensive Guide</strong><br>
+                        Author: Jane Doe<br>
+                        ISBN: 978-1-23-456789-0<br>
+                        <span class="status borrowed">Borrowed</span>
+                        <a href="https://cloud.schoolservices.ai/library/book/history-guide" class="btn">View Details</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Add New Textbook</h2>
+                <form id="add-book-form">
+                    <div class="form-group">
+                        <label for="book-title">Title</label>
+                        <input type="text" id="book-title" name="book-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-author">Author</label>
+                        <input type="text" id="book-author" name="book-author" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-isbn">ISBN</label>
+                        <input type="text" id="book-isbn" name="book-isbn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-quantity">Quantity</label>
+                        <input type="number" id="book-quantity" name="book-quantity" required min="1">
+                    </div>
+                    <button type="submit" class="btn">Add Textbook</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Student Borrowing</h2>
+                <form id="borrow-form">
+                    <div class="form-group">
+                        <label for="student-id">Student ID</label>
+                        <input type="text" id="student-id" name="student-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-isbn-borrow">Book ISBN</label>
+                        <input type="text" id="book-isbn-borrow" name="book-isbn-borrow" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="borrow-date">Borrow Date</label>
+                        <input type="date" id="borrow-date" name="borrow-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="return-date">Expected Return Date</label>
+                        <input type="date" id="return-date" name="return-date" required>
+                    </div>
+                    <button type="submit" class="btn">Process Borrowing</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Student Textbook Status</h2>
+                <input type="text" class="search-bar" id="student-search" placeholder="Search for students...">
+                <ul class="student-list" id="student-list">
+                    <li>
+                        <strong>Alice Johnson (ID: 12345)</strong><br>
+                        Borrowed Books: 2<br>
+                        <a href="https://cloud.schoolservices.ai/library/student/12345" class="btn">View Details</a>
+                    </li>
+                    <li>
+                        <strong>Bob Williams (ID: 67890)</strong><br>
+                        Borrowed Books: 1<br>
+                        <a href="https://cloud.schoolservices.ai/library/student/67890" class="btn">View Details</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Library Analytics</h2>
+                <div class="chart-container" id="borrowing-chart"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Book Search Functionality
+        document.getElementById('book-search').addEventListener('input', function() {
+            let searchTerm = this.value.toLowerCase();
+            let bookList = document.getElementById('book-list').getElementsByTagName('li');
+            for (let i = 0; i < bookList.length; i++) {
+                let bookTitle = bookList[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
+                if (bookTitle.includes(searchTerm)) {
+                    bookList[i].style.display = "";
+                } else {
+                    bookList[i].style.display = "none";
+                }
+            }
+        });
+
+        // Student Search Functionality
+        document.getElementById('student-search').addEventListener('input', function() {
+            let searchTerm = this.value.toLowerCase();
+            let studentList = document.getElementById('student-list').getElementsByTagName('li');
+            for (let i = 0; i < studentList.length; i++) {
+                let studentName = studentList[i].getElementsByTagName('strong')[0].innerText.toLowerCase();
+                if (studentName.includes(searchTerm)) {
+                    studentList[i].style.display = "";
+                } else {
+                    studentList[i].style.display = "none";
+                }
+            }
+        });
+
+        // Add New Textbook Form Submission
+        document.getElementById('add-book-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Textbook added successfully!');
+            this.reset();
+        });
+
+        // Borrow Book Form Submission
+        document.getElementById('borrow-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Book borrowed successfully!');
+            this.reset();
+        });
+
+        // Library Analytics Chart
+        const ctx = document.createElement('canvas');
+        document.getElementById('borrowing-chart').appendChild(ctx);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Mathematics', 'History', 'Science', 'Literature', 'Geography'],
+                datasets: [{
+                    label: 'Number of Borrowed Books',
+                    data: [65, 59, 80, 81, 56],
+                    backgroundColor: 'rgba(74, 102, 112, 0.6)',
+                    borderColor: 'rgba(74, 102, 112, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Textbook Borrowing by Subject'
+                    }
+                }
+            }
+        });
+    </script>
+</body></html>

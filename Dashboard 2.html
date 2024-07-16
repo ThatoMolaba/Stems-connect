@@ -1,0 +1,201 @@
+<html><head><base href="https://cloud.schoolservices.ai/dashboard"><title>Stems Connect - Dashboard</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        margin: 0;
+        padding: 0;
+        background-color: #e8d8c3;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: #4a6670;
+        color: #fff;
+        padding: 1rem;
+        text-align: center;
+    }
+    nav {
+        background-color: #d1b899;
+        padding: 0.5rem;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 0 10px;
+    }
+    nav ul li a {
+        color: #4a6670;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .dashboard {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .widget {
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #4a6670;
+        margin-top: 0;
+    }
+    .progress-bar {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    .progress {
+        height: 20px;
+        background-color: #4a6670;
+        border-radius: 5px;
+        text-align: center;
+        line-height: 20px;
+        color: white;
+    }
+    .notification {
+        background-color: #e6f3ff;
+        border: 1px solid #b3d9ff;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #4a6670;
+        color: white;
+    }
+    .button {
+        display: inline-block;
+        background-color: #4a6670;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        border-radius: 3px;
+        margin-top: 10px;
+    }
+    .button:hover {
+        background-color: #3a5260;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect Dashboard</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/home">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/dashboard">Dashboard</a></li>
+            <li><a href="https://cloud.schoolservices.ai/calendar">Calendar</a></li>
+            <li><a href="https://cloud.schoolservices.ai/messages">Messages</a></li>
+            <li><a href="https://cloud.schoolservices.ai/settings">Settings</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="dashboard">
+            <div class="widget">
+                <h2>Overall Progress</h2>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;">75%</div>
+                </div>
+                <p>You're doing great! Keep up the good work.</p>
+                <a href="https://cloud.schoolservices.ai/progress-report" class="button">View Detailed Report</a>
+            </div>
+            <div class="widget">
+                <h2>Recent Notifications</h2>
+                <div class="notification">
+                    <strong>New assignment posted:</strong> "Ecosystem Project" due on May 25th.
+                </div>
+                <div class="notification">
+                    <strong>Reminder:</strong> Parent-Teacher conference on May 15th.
+                </div>
+                <div class="notification">
+                    <strong>Grade update:</strong> Math quiz grade posted.
+                </div>
+                <a href="https://cloud.schoolservices.ai/notifications" class="button">View All Notifications</a>
+            </div>
+            <div class="widget">
+                <h2>Upcoming Deadlines</h2>
+                <table>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Due Date</th>
+                    </tr>
+                    <tr>
+                        <td>History Essay</td>
+                        <td>May 18</td>
+                    </tr>
+                    <tr>
+                        <td>Science Lab Report</td>
+                        <td>May 22</td>
+                    </tr>
+                    <tr>
+                        <td>Ecosystem Project</td>
+                        <td>May 25</td>
+                    </tr>
+                </table>
+                <a href="https://cloud.schoolservices.ai/assignments" class="button">View All Assignments</a>
+            </div>
+            <div class="widget">
+                <h2>AI Tutor Availability</h2>
+                <p>Our AI tutoring system is available 24/7 to help you with your studies.</p>
+                <p>Recent subjects you've worked on:</p>
+                <ul>
+                    <li>Algebra</li>
+                    <li>World History</li>
+                    <li>Biology</li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/ai-tutor" class="button">Start AI Tutoring Session</a>
+            </div>
+            <div class="widget">
+                <h2>Virtual Lab Access</h2>
+                <p>Explore our state-of-the-art virtual labs for hands-on learning experiences.</p>
+                <ul>
+                    <li>Chemistry Lab</li>
+                    <li>Physics Simulator</li>
+                    <li>Biology 3D Cell Explorer</li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/virtual-labs" class="button">Enter Virtual Lab</a>
+            </div>
+            <div class="widget">
+                <h2>Personal Growth</h2>
+                <h3>Skills Developed:</h3>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 80%;">Critical Thinking 80%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 65%;">Collaboration 65%</div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 90%;">Digital Literacy 90%</div>
+                </div>
+                <a href="https://cloud.schoolservices.ai/personal-growth" class="button">View Skill Details</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

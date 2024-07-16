@@ -1,0 +1,374 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20%20HR%20Management"><title>Stems Connect - HR Management</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .staff-list, .leave-request-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .staff-list li, .leave-request-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .staff-list li:hover, .leave-request-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status-badge.pending {
+        background-color: var(--warning-color);
+        color: black;
+    }
+    .status-badge.approved {
+        background-color: var(--success-color);
+        color: white;
+    }
+    .status-badge.rejected {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+    }
+    .photo-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+    }
+    .photo-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    .photo-item .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.7);
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        transition: .5s ease;
+    }
+    .photo-item:hover .overlay {
+        height: 100%;
+    }
+    .photo-item .overlay-text {
+        color: white;
+        font-size: 12px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .location-map {
+        width: 100%;
+        height: 300px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>HR Management</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/payroll">Payroll</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/contracts">Contracts</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/leave">Leave Management</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/self-service">Self-Service</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/photos">Photos</a></li>
+            <li><a href="https://cloud.schoolservices.ai/hr/locations">Locations</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module">
+                <h2>Payroll Overview</h2>
+                <p>Next payroll run: May 31, 2023</p>
+                <ul class="staff-list">
+                    <li>
+                        <strong>John Smith</strong> - Teacher<br>
+                        Gross Pay: $3,500<br>
+                        <button class="btn" onclick="viewPayslip('John Smith')">View Payslip</button>
+                    </li>
+                    <li>
+                        <strong>Sarah Johnson</strong> - Administrator<br>
+                        Gross Pay: $4,200<br>
+                        <button class="btn" onclick="viewPayslip('Sarah Johnson')">View Payslip</button>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/hr/payroll/run" class="btn">Run Payroll</a>
+            </div>
+            <div class="module">
+                <h2>Contract Management</h2>
+                <ul class="staff-list">
+                    <li>
+                        <strong>Michael Brown</strong> - IT Specialist<br>
+                        Contract Expiry: August 31, 2023<br>
+                        <button class="btn" onclick="renewContract('Michael Brown')">Renew Contract</button>
+                    </li>
+                    <li>
+                        <strong>Emily Davis</strong> - Librarian<br>
+                        Contract Expiry: July 15, 2023<br>
+                        <button class="btn" onclick="renewContract('Emily Davis')">Renew Contract</button>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/hr/contracts/new" class="btn">New Contract</a>
+            </div>
+            <div class="module">
+                <h2>Leave Management</h2>
+                <ul class="leave-request-list">
+                    <li>
+                        <strong>John Smith</strong> - Teacher<br>
+                        Leave Type: Sick Leave<br>
+                        Dates: June 5-7, 2023<br>
+                        <span class="status-badge pending">Pending</span>
+                        <button class="btn" onclick="approveLeave('John Smith', 'Sick Leave')">Approve</button>
+                        <button class="btn" onclick="rejectLeave('John Smith', 'Sick Leave')">Reject</button>
+                    </li>
+                    <li>
+                        <strong>Sarah Johnson</strong> - Administrator<br>
+                        Leave Type: Vacation<br>
+                        Dates: July 10-14, 2023<br>
+                        <span class="status-badge approved">Approved</span>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/hr/leave/request" class="btn">Request Leave</a>
+            </div>
+            <div class="module">
+                <h2>Staff Self-Service</h2>
+                <p>Access your personal information and make requests online.</p>
+                <ul>
+                    <li><a href="https://cloud.schoolservices.ai/hr/self-service/personal-info">Update Personal Information</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/hr/self-service/payslips">View Payslips</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/hr/self-service/leave-balance">Check Leave Balance</a></li>
+                    <li><a href="https://cloud.schoolservices.ai/hr/self-service/training">Training and Development</a></li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Photo Management</h2>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="https://cloud.schoolservices.ai/photos/staff/john-smith.jpg" alt="John Smith" width="100" height="100">
+                        <div class="overlay">
+                            <div class="overlay-text">John Smith<br>Teacher</div>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://cloud.schoolservices.ai/photos/staff/sarah-johnson.jpg" alt="Sarah Johnson" width="100" height="100">
+                        <div class="overlay">
+                            <div class="overlay-text">Sarah Johnson<br>Administrator</div>
+                        </div>
+                    </div>
+                    <div class="photo-item">
+                        <img src="https://cloud.schoolservices.ai/photos/students/emma-wilson.jpg" alt="Emma Wilson" width="100" height="100">
+                        <div class="overlay">
+                            <div class="overlay-text">Emma Wilson<br>Student</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://cloud.schoolservices.ai/hr/photos/upload" class="btn">Upload New Photo</a>
+            </div>
+            <div class="module">
+                <h2>Location Tracking</h2>
+                <div class="location-map">
+                    [Interactive map would be displayed here]
+                </div>
+                <p>Track residents' locations and manage parent-student relations.</p>
+                <a href="https://cloud.schoolservices.ai/hr/locations/update" class="btn">Update Locations</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function viewPayslip(staffName) {
+            alert(`Viewing payslip for ${staffName}`);
+            // In a real application, this would open a detailed payslip view
+        }
+
+        function renewContract(staffName) {
+            alert(`Initiating contract renewal process for ${staffName}`);
+            // In a real application, this would open a contract renewal form
+        }
+
+        function approveLeave(staffName, leaveType) {
+            alert(`Approving ${leaveType} for ${staffName}`);
+            // In a real application, this would update the leave status and notify the staff member
+        }
+
+        function rejectLeave(staffName, leaveType) {
+            alert(`Rejecting ${leaveType} for ${staffName}`);
+            // In a real application, this would update the leave status and notify the staff member
+        }
+
+        // Simulated photo upload functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/hr/photos/upload"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Photo upload functionality would be implemented here.');
+        });
+
+        // Simulated location update functionality
+        document.querySelector('a[href="https://cloud.schoolservices.ai/hr/locations/update"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            alert('Location update functionality would be implemented here.');
+        });
+
+        // Add hover effect to staff list items
+        document.querySelectorAll('.staff-list li, .leave-request-list li').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#e0e0e0';
+            });
+            item.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = '#f8f8f8';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,407 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20Calendar%20and%20Events%20Management"><title>Stems Connect - Calendar and Events Management</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .event-list, .resource-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .event-list li, .resource-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .event-list li:hover, .resource-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
+    .calendar {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .calendar th, .calendar td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: center;
+    }
+    .calendar th {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    .calendar td {
+        height: 100px;
+        vertical-align: top;
+    }
+    .calendar .event {
+        background-color: var(--info-color);
+        color: white;
+        padding: 2px 5px;
+        margin-bottom: 2px;
+        border-radius: 3px;
+        font-size: 0.8em;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status-badge.pending {
+        background-color: var(--warning-color);
+        color: black;
+    }
+    .status-badge.approved {
+        background-color: var(--success-color);
+        color: white;
+    }
+    .status-badge.rejected {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    .sync-status {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+    }
+    .sync-status .indicator {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 10px;
+    }
+    .sync-status .indicator.synced {
+        background-color: var(--success-color);
+    }
+    .sync-status .indicator.not-synced {
+        background-color: var(--danger-color);
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Calendar and Events Management</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/calendar">Calendar</a></li>
+            <li><a href="https://cloud.schoolservices.ai/events">Events</a></li>
+            <li><a href="https://cloud.schoolservices.ai/resources">Resources</a></li>
+            <li><a href="https://cloud.schoolservices.ai/consent">Consent Forms</a></li>
+            <li><a href="https://cloud.schoolservices.ai/sync">Sync</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Monthly Calendar</h2>
+                <table class="calendar">
+                    <thead>
+                        <tr>
+                            <th>Sun</th>
+                            <th>Mon</th>
+                            <th>Tue</th>
+                            <th>Wed</th>
+                            <th>Thu</th>
+                            <th>Fri</th>
+                            <th>Sat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>1
+                                <div class="event">Staff Meeting</div>
+                            </td>
+                            <td>2</td>
+                            <td>3
+                                <div class="event">Sports Day</div>
+                            </td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>6
+                                <div class="event">Parent-Teacher Conference</div>
+                            </td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10
+                                <div class="event">School Play</div>
+                            </td>
+                            <td>11</td>
+                        </tr>
+                        <!-- More rows would be added here for a full month -->
+                    </tbody>
+                </table>
+                <div class="sync-status">
+                    <div class="indicator synced"></div>
+                    <span>Synced with Google Calendar</span>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Create New Event</h2>
+                <form id="event-form">
+                    <div class="form-group">
+                        <label for="event-name">Event Name</label>
+                        <input type="text" id="event-name" name="event-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input type="date" id="event-date" name="event-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-time">Time</label>
+                        <input type="time" id="event-time" name="event-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-group">User Group</label>
+                        <select id="event-group" name="event-group" required>
+                            <option value="">Select a group</option>
+                            <option value="all">All</option>
+                            <option value="students">Students</option>
+                            <option value="teachers">Teachers</option>
+                            <option value="parents">Parents</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-description">Description</label>
+                        <textarea id="event-description" name="event-description" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Create Event</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Facility Booking</h2>
+                <form id="booking-form">
+                    <div class="form-group">
+                        <label for="facility">Facility</label>
+                        <select id="facility" name="facility" required>
+                            <option value="">Select a facility</option>
+                            <option value="auditorium">Auditorium</option>
+                            <option value="gymnasium">Gymnasium</option>
+                            <option value="lab">Science Lab</option>
+                            <option value="field">Sports Field</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-date">Date</label>
+                        <input type="date" id="booking-date" name="booking-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-time">Time</label>
+                        <input type="time" id="booking-time" name="booking-time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="booking-duration">Duration (hours)</label>
+                        <input type="number" id="booking-duration" name="booking-duration" min="1" max="8" required>
+                    </div>
+                    <button type="submit" class="btn">Book Facility</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Parent Consent Management</h2>
+                <ul class="event-list">
+                    <li>
+                        <strong>Field Trip to Science Museum</strong><br>
+                        Date: June 15, 2023<br>
+                        <span class="status-badge pending">10 Pending</span>
+                        <span class="status-badge approved">15 Approved</span>
+                        <button class="btn" onclick="sendReminder('Field Trip to Science Museum')">Send Reminder</button>
+                    </li>
+                    <li>
+                        <strong>Annual Sports Day</strong><br>
+                        Date: July 5, 2023<br>
+                        <span class="status-badge approved">All Approved</span>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/consent/new" class="btn">Create New Consent Form</a>
+            </div>
+            <div class="module">
+                <h2>Google Calendar Sync</h2>
+                <p>Last synced: May 15, 2023 10:30 AM</p>
+                <button class="btn" onclick="syncCalendar()">Sync Now</button>
+                <div class="sync-status">
+                    <div class="indicator synced"></div>
+                    <span>Synced with Google Calendar</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Event Creation Form Submission
+        document.getElementById('event-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let eventName = document.getElementById('event-name').value;
+            let eventDate = document.getElementById('event-date').value;
+            alert(`Event "${eventName}" created for ${eventDate}`);
+            this.reset();
+        });
+
+        // Facility Booking Form Submission
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let facility = document.getElementById('facility').value;
+            let bookingDate = document.getElementById('booking-date').value;
+            alert(`${facility} booked for ${bookingDate}`);
+            this.reset();
+        });
+
+        // Send Reminder for Consent
+        function sendReminder(eventName) {
+            alert(`Reminder sent to parents for "${eventName}"`);
+        }
+
+        // Sync with Google Calendar
+        function syncCalendar() {
+            alert('Syncing with Google Calendar...');
+            // In a real application, this would trigger the sync process
+            document.querySelector('.sync-status .indicator').className = 'indicator synced';
+            document.querySelector('.sync-status span').textContent = 'Synced with Google Calendar';
+        }
+
+        // Calendar Interactivity
+        document.querySelectorAll('.calendar td').forEach(cell => {
+            cell.addEventListener('click', function() {
+                if (this.querySelector('.event')) {
+                    alert(`Events on this day:\n${this.querySelector('.event').textContent}`);
+                } else {
+                    alert('No events scheduled for this day.');
+                }
+            });
+        });
+    </script>
+</body></html>

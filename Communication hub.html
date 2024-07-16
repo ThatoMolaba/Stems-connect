@@ -1,0 +1,379 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20%20Communication"><title>Stems Connect - Communication Hub</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --danger-color: #F44336;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .message-list, .document-list, .needs-list, .wellness-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .message-list li, .document-list li, .needs-list li, .wellness-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .message-list li:hover, .document-list li:hover, .needs-list li:hover, .wellness-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        font-weight: bold;
+    }
+    .status-badge.high {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    .status-badge.medium {
+        background-color: var(--warning-color);
+        color: black;
+    }
+    .status-badge.low {
+        background-color: var(--success-color);
+        color: white;
+    }
+    .chat-window {
+        height: 300px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 8px;
+        border-radius: 8px;
+        max-width: 70%;
+    }
+    .chat-message.sent {
+        background-color: var(--info-color);
+        color: white;
+        align-self: flex-end;
+        margin-left: auto;
+    }
+    .chat-message.received {
+        background-color: #f1f1f1;
+        align-self: flex-start;
+    }
+    .progress-chart {
+        width: 100%;
+        height: 200px;
+        background-color: #f0f0f0;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-style: italic;
+        color: #666;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Communication Hub</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/email">Email</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/sms">SMS</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/chat">Instant Chat</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/documents">Documents</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/newsletter">Newsletter</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/special-needs">Special Needs</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication/wellness">Wellness</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module">
+                <h2>Email Center</h2>
+                <form id="email-form">
+                    <div class="form-group">
+                        <label for="email-to">To:</label>
+                        <input type="text" id="email-to" name="email-to" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-subject">Subject:</label>
+                        <input type="text" id="email-subject" name="email-subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-body">Message:</label>
+                        <textarea id="email-body" name="email-body" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Email</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>SMS Notifications</h2>
+                <form id="sms-form">
+                    <div class="form-group">
+                        <label for="sms-to">To:</label>
+                        <input type="text" id="sms-to" name="sms-to" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="sms-message">Message:</label>
+                        <textarea id="sms-message" name="sms-message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send SMS</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Instant Chat</h2>
+                <div class="chat-window" id="chat-window">
+                    <div class="chat-message received">Hello! How can I help you today?</div>
+                    <div class="chat-message sent">I need information about the upcoming parent-teacher conference.</div>
+                    <div class="chat-message received">Certainly! The parent-teacher conference is scheduled for next Friday from 3 PM to 7 PM. Would you like me to send you the full schedule?</div>
+                </div>
+                <form id="chat-form">
+                    <div class="form-group">
+                        <input type="text" id="chat-message" name="chat-message" placeholder="Type your message here..." required>
+                    </div>
+                    <button type="submit" class="btn">Send</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Document Sharing</h2>
+                <ul class="document-list">
+                    <li>
+                        <strong>School Calendar 2023-2024</strong><br>
+                        Uploaded: May 15, 2023<br>
+                        <button class="btn" onclick="viewDocument('School Calendar 2023-2024')">View</button>
+                        <button class="btn" onclick="downloadDocument('School Calendar 2023-2024')">Download</button>
+                    </li>
+                    <li>
+                        <strong>Parent Handbook</strong><br>
+                        Uploaded: April 1, 2023<br>
+                        <button class="btn" onclick="viewDocument('Parent Handbook')">View</button>
+                        <button class="btn" onclick="downloadDocument('Parent Handbook')">Download</button>
+                    </li>
+                </ul>
+                <button class="btn" onclick="uploadDocument()">Upload New Document</button>
+            </div>
+            <div class="module">
+                <h2>Newsletter Management</h2>
+                <form id="newsletter-form">
+                    <div class="form-group">
+                        <label for="newsletter-title">Newsletter Title:</label>
+                        <input type="text" id="newsletter-title" name="newsletter-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newsletter-content">Content:</label>
+                        <textarea id="newsletter-content" name="newsletter-content" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Create & Send Newsletter</button>
+                </form>
+            </div>
+            <div class="module">
+                <h2>Special Needs Management</h2>
+                <ul class="needs-list">
+                    <li>
+                        <strong>John Doe</strong> - Grade 5<br>
+                        Need: Dyslexia Support<br>
+                        <span class="status-badge medium">Moderate</span>
+                        <button class="btn" onclick="viewSpecialNeed('John Doe')">View Details</button>
+                    </li>
+                    <li>
+                        <strong>Jane Smith</strong> - Grade 3<br>
+                        Need: ADHD Accommodation<br>
+                        <span class="status-badge high">High Priority</span>
+                        <button class="btn" onclick="viewSpecialNeed('Jane Smith')">View Details</button>
+                    </li>
+                </ul>
+                <button class="btn" onclick="addSpecialNeed()">Add New Special Need</button>
+            </div>
+            <div class="module">
+                <h2>Student Wellness Monitoring</h2>
+                <ul class="wellness-list">
+                    <li>
+                        <strong>Emma Wilson</strong> - Grade 8<br>
+                        Wellness Score: 85/100<br>
+                        <span class="status-badge low">Good</span>
+                        <button class="btn" onclick="viewWellnessDetails('Emma Wilson')">View Details</button>
+                    </li>
+                    <li>
+                        <strong>Michael Brown</strong> - Grade 6<br>
+                        Wellness Score: 65/100<br>
+                        <span class="status-badge medium">Needs Attention</span>
+                        <button class="btn" onclick="viewWellnessDetails('Michael Brown')">View Details</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Student Progress Tracker</h2>
+                <div class="progress-chart">
+                    [Interactive progress chart would be displayed here]
+                </div>
+                <p>Track and visualize students' academic and personal growth over time.</p>
+                <button class="btn" onclick="generateProgressReport()">Generate Progress Report</button>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Email Form Submission
+        document.getElementById('email-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let to = document.getElementById('email-to').value;
+            let subject = document.getElementById('email-subject').value;
+            alert(`Email sent to ${to} with subject: ${subject}`);
+            this.reset();
+        });
+
+        // SMS Form Submission
+        document.getElementById('sms-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let to = document.getElementById('sms-to').value;
+            alert(`SMS sent to ${to}`);
+            this.reset();
+        });
+
+        // Chat Form Submission
+        document.getElementById('chat-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let message = document.getElementById('chat-message').value;
+            let chatWindow = document.getElementById('chat-window');
+            let newMessage = document.createElement('div');
+            newMessage.className = 'chat-message sent';
+            newMessage.textContent = message;
+            chatWindow.appendChild(newMessage);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+            this.reset();
+        });
+
+        // Newsletter Form Submission
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let title = document.getElementById('newsletter-title').value;
+            alert

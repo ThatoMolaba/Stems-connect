@@ -1,0 +1,342 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20Business%20Directory%20Integration"><title>Stems Connect - Business Directory Integration</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+        --success-color: #4CAF50;
+        --warning-color: #FFC107;
+        --info-color: #2196F3;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        padding: 8px 15px;
+        border-radius: 25px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        padding: 30px 0;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 15px;
+        margin-top: 0;
+        font-size: 1.5em;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 12px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+    }
+    .btn:hover {
+        background-color: #384d55;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+    }
+    .business-list, .job-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .business-list li, .job-list li {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #f8f8f8;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+    .business-list li:hover, .job-list li:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+    }
+    .tag {
+        display: inline-block;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+        margin-right: 5px;
+    }
+    .search-bar {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 1em;
+        margin-bottom: 20px;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+    }
+    .featured {
+        border: 2px solid var(--info-color);
+        position: relative;
+    }
+    .featured::after {
+        content: 'Featured';
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: var(--info-color);
+        color: white;
+        padding: 5px 10px;
+        border-radius: 15px;
+        font-size: 0.8em;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Business Directory Integration</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/businesses">Businesses</a></li>
+            <li><a href="https://cloud.schoolservices.ai/jobs">Jobs</a></li>
+            <li><a href="https://cloud.schoolservices.ai/networking">Networking</a></li>
+            <li><a href="https://cloud.schoolservices.ai/events">Events</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Search Businesses and Jobs</h2>
+                <input type="text" class="search-bar" id="search-bar" placeholder="Search for businesses or jobs...">
+                <div id="search-results"></div>
+            </div>
+            <div class="module">
+                <h2>Featured Businesses</h2>
+                <ul class="business-list">
+                    <li class="featured">
+                        <strong>TechInnovate Solutions</strong><br>
+                        IT Consulting & Software Development<br>
+                        <span class="tag">Alumni-Owned</span>
+                        <span class="tag">Internships Available</span><br>
+                        <a href="https://cloud.schoolservices.ai/businesses/techinnovate" class="btn">Learn More</a>
+                    </li>
+                    <li>
+                        <strong>Green Earth Landscaping</strong><br>
+                        Eco-friendly Landscaping Services<br>
+                        <span class="tag">Parent-Owned</span>
+                        <span class="tag">Part-time Jobs</span><br>
+                        <a href="https://cloud.schoolservices.ai/businesses/greenearth" class="btn">Learn More</a>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/businesses/add" class="btn">Add Your Business</a>
+            </div>
+            <div class="module">
+                <h2>Latest Job Listings</h2>
+                <ul class="job-list">
+                    <li>
+                        <strong>Summer Intern - Marketing</strong><br>
+                        TechInnovate Solutions<br>
+                        <span class="tag">Internship</span>
+                        <span class="tag">Marketing</span><br>
+                        <a href="https://cloud.schoolservices.ai/jobs/techinnovate-marketing-intern" class="btn">Apply Now</a>
+                    </li>
+                    <li>
+                        <strong>Part-time Landscaper</strong><br>
+                        Green Earth Landscaping<br>
+                        <span class="tag">Part-time</span>
+                        <span class="tag">Outdoor</span><br>
+                        <a href="https://cloud.schoolservices.ai/jobs/greenearth-landscaper" class="btn">Apply Now</a>
+                    </li>
+                </ul>
+                <a href="https://cloud.schoolservices.ai/jobs/post" class="btn">Post a Job</a>
+            </div>
+            <div class="module">
+                <h2>Upcoming Networking Events</h2>
+                <ul class="event-list">
+                    <li>
+                        <strong>Annual Business Mixer</strong><br>
+                        Date: June 15, 2023 | 6:00 PM<br>
+                        Location: School Auditorium<br>
+                        <a href="https://cloud.schoolservices.ai/events/business-mixer-2023" class="btn">RSVP</a>
+                    </li>
+                    <li>
+                        <strong>Career Fair</strong><br>
+                        Date: July 10, 2023 | 10:00 AM - 4:00 PM<br>
+                        Location: School Gymnasium<br>
+                        <a href="https://cloud.schoolservices.ai/events/career-fair-2023" class="btn">Learn More</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Community Business Engagement</h2>
+                <div class="chart-container" id="engagement-chart"></div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Search Functionality
+        document.getElementById('search-bar').addEventListener('input', function() {
+            let searchTerm = this.value.toLowerCase();
+            let searchResults = document.getElementById('search-results');
+            searchResults.innerHTML = '';
+
+            if (searchTerm.length > 2) {
+                // Simulated search results
+                let results = [
+                    {type: 'business', name: 'TechInnovate Solutions', description: 'IT Consulting & Software Development'},
+                    {type: 'job', name: 'Summer Intern - Marketing', company: 'TechInnovate Solutions'},
+                    {type: 'business', name: 'Green Earth Landscaping', description: 'Eco-friendly Landscaping Services'},
+                    {type: 'job', name: 'Part-time Landscaper', company: 'Green Earth Landscaping'}
+                ];
+
+                results.forEach(result => {
+                    if (result.name.toLowerCase().includes(searchTerm) || 
+                        (result.description && result.description.toLowerCase().includes(searchTerm)) ||
+                        (result.company && result.company.toLowerCase().includes(searchTerm))) {
+                        let resultElement = document.createElement('div');
+                        resultElement.innerHTML = `<strong>${result.name}</strong> - ${result.type === 'business' ? result.description : result.company}`;
+                        searchResults.appendChild(resultElement);
+                    }
+                });
+            }
+        });
+
+        // Business and Job List Interactivity
+        document.querySelectorAll('.business-list li, .job-list li').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.backgroundColor = '#e0e0e0';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 300);
+            });
+        });
+
+        // Community Business Engagement Chart
+        const ctx = document.createElement('canvas');
+        document.getElementById('engagement-chart').appendChild(ctx);
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Business Listings',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: 'rgba(74, 102, 112, 0.6)',
+                    borderColor: 'rgba(74, 102, 112, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Job Postings',
+                    data: [5, 15, 10, 8],
+                    backgroundColor: 'rgba(209, 184, 153, 0.6)',
+                    borderColor: 'rgba(209, 184, 153, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Event Participants',
+                    data: [50, 80, 60, 100],
+                    backgroundColor: 'rgba(33, 150, 243, 0.6)',
+                    borderColor: 'rgba(33, 150, 243, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Community Business Engagement Trends'
+                    }
+                }
+            }
+        });
+    </script>
+</body></html>

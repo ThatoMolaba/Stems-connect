@@ -1,0 +1,359 @@
+<html><head><base href="https://cloud.schoolservices.ai/%20assessment"><title>Stems Connect - Enhanced Assessment Portal</title>
+<style>
+    :root {
+        --primary-color: #4a6670;
+        --secondary-color: #e8d8c3;
+        --accent-color: #d1b899;
+        --text-color: #333;
+    }
+    body {
+        font-family: 'Roboto', Arial, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        background-color: var(--secondary-color);
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    header {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    nav {
+        background-color: var(--accent-color);
+        padding: 0.5rem;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    nav ul li {
+        margin: 5px 10px;
+    }
+    nav ul li a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+    nav ul li a:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    main {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+    }
+    .module {
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+    }
+    .module:hover {
+        transform: translateY(-5px);
+    }
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--accent-color);
+        padding-bottom: 10px;
+        margin-top: 0;
+    }
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        padding: 10px 15px;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+        background-color: #384d55;
+    }
+    .assessment-list {
+        list-style-type: none;
+        padding: 0;
+    }
+    .assessment-list li {
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+    }
+    .progress-bar {
+        background-color: #e0e0e0;
+        border-radius: 5px;
+        height: 20px;
+        margin-top: 10px;
+    }
+    .progress {
+        background-color: var(--primary-color);
+        height: 100%;
+        border-radius: 5px;
+        width: 0;
+        transition: width 0.5s ease-in-out;
+    }
+    .chart-container {
+        width: 100%;
+        height: 300px;
+        margin-top: 20px;
+    }
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 200px;
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+        opacity: 1;
+    }
+    .search-bar {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid var(--accent-color);
+        border-radius: 5px;
+    }
+    .tab-container {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .tab {
+        padding: 10px 20px;
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .tab.active {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+    }
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active {
+        display: block;
+    }
+</style>
+</head><body>
+    <header>
+        <h1>Stems Connect</h1>
+        <p>Enhanced Assessment Portal</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="https://cloud.schoolservices.ai/">Home</a></li>
+            <li><a href="https://cloud.schoolservices.ai/attendance">Attendance</a></li>
+            <li><a href="https://cloud.schoolservices.ai/communication">Communication</a></li>
+            <li><a href="https://cloud.schoolservices.ai/assessment">Assessment</a></li>
+            <li><a href="https://cloud.schoolservices.ai/admissions">Admissions</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <main>
+            <div class="module" style="grid-column: 1 / -1;">
+                <h2>Comprehensive Records</h2>
+                <input type="text" class="search-bar" placeholder="Search for student, parent, or staff member...">
+                <div class="tab-container">
+                    <button class="tab active" onclick="openTab(event, 'students')">Students</button>
+                    <button class="tab" onclick="openTab(event, 'parents')">Parents</button>
+                    <button class="tab" onclick="openTab(event, 'staff')">Staff</button>
+                </div>
+                <div id="students" class="tab-content active">
+                    <ul class="assessment-list">
+                        <li>
+                            <strong>John Doe</strong> - Grade 10<br>
+                            <a href="https://cloud.schoolservices.ai/assessment/student/john-doe" class="btn">View Full Record</a>
+                        </li>
+                        <li>
+                            <strong>Jane Smith</strong> - Grade 11<br>
+                            <a href="https://cloud.schoolservices.ai/assessment/student/jane-smith" class="btn">View Full Record</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="parents" class="tab-content">
+                    <ul class="assessment-list">
+                        <li>
+                            <strong>Mr. & Mrs. Doe</strong> - Parents of John Doe<br>
+                            <a href="https://cloud.schoolservices.ai/assessment/parent/doe-family" class="btn">View Full Record</a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="staff" class="tab-content">
+                    <ul class="assessment-list">
+                        <li>
+                            <strong>Ms. Johnson</strong> - Math Teacher<br>
+                            <a href="https://cloud.schoolservices.ai/assessment/staff/ms-johnson" class="btn">View Full Record</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Online Assignments</h2>
+                <ul class="assessment-list">
+                    <li>
+                        <strong>Math Homework 5</strong><br>
+                        Due: May 18, 2023<br>
+                        <span class="tooltip">Linked to Algebra Markbook
+                            <span class="tooltiptext">This assignment will automatically update the Algebra subject markbook upon submission</span>
+                        </span><br>
+                        <a href="https://cloud.schoolservices.ai/assessment/assignment/math-hw5" class="btn">Start Assignment</a>
+                    </li>
+                    <li>
+                        <strong>Science Lab Report</strong><br>
+                        Due: May 22, 2023<br>
+                        <span class="tooltip">Linked to Biology Markbook
+                            <span class="tooltiptext">This report will automatically update the Biology subject markbook upon submission</span>
+                        </span><br>
+                        <a href="https://cloud.schoolservices.ai/assessment/assignment/science-lab" class="btn">Start Report</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Simplified Assignments</h2>
+                <ul class="assessment-list">
+                    <li>
+                        <strong>English Vocab Quiz</strong><br>
+                        Time: 15 minutes<br>
+                        <a href="https://cloud.schoolservices.ai/assessment/simplified/english-vocab" class="btn">Take Quiz</a>
+                    </li>
+                    <li>
+                        <strong>History Timeline Activity</strong><br>
+                        Estimated time: 30 minutes<br>
+                        <a href="https://cloud.schoolservices.ai/assessment/simplified/history-timeline" class="btn">Start Activity</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Assessment Progress</h2>
+                <div class="tooltip">
+                    Math Midterm Preparation
+                    <span class="tooltiptext">Based on practice tests and homework completion</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 75%;"></div>
+                </div>
+                <div class="tooltip">
+                    Science Project
+                    <span class="tooltiptext">Progress on research, experimentation, and presentation preparation</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+                <div class="tooltip">
+                    English Essay
+                    <span class="tooltiptext">Progress on drafting, peer review, and final edits</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div class="module">
+                <h2>Recent Results</h2>
+                <ul class="assessment-list">
+                    <li>
+                        <strong>History Quiz</strong><br>
+                        Score: 85%<br>
+                        <a href="https://cloud.schoolservices.ai/assessment/history-quiz-results" class="btn">View Feedback</a>
+                    </li>
+                    <li>
+                        <strong>Chemistry Lab Report</strong><br>
+                        Grade: A-<br>
+                        <a href="https://cloud.schoolservices.ai/assessment/chemistry-lab-feedback" class="btn">View Feedback</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="module">
+                <h2>Performance Analytics</h2>
+                <div class="chart-container" id="performanceChart"></div>
+                <p>Subject-wise performance over the last semester</p>
+                <a href="https://cloud.schoolservices.ai/assessment/detailed-analytics" class="btn">View Detailed Analytics</a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Simulated chart data
+        const chartData = {
+            labels: ['Math', 'Science', 'English', 'History', 'Art'],
+            datasets: [{
+                label: 'Performance',
+                data: [85, 92, 78, 88, 95],
+                backgroundColor: 'rgba(74, 102, 112, 0.6)',
+                borderColor: 'rgba(74, 102, 112, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Create a simple bar chart
+        const ctx = document.createElement('canvas');
+        document.getElementById('performanceChart').appendChild(ctx);
+        new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                },
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body></html>
